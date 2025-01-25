@@ -1,0 +1,37 @@
+<div class="flex flex-col">
+    <div class="-m-1.5 overflow-x-auto">
+      <div class="p-1.5 min-w-full inline-block align-middle">
+        <div class="overflow-hidden">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead>
+              <tr>
+                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Email</th>
+                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Date</th>
+                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Address</th>
+                <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Approve</th>          
+                <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Reject</th>
+                <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Reject Reason</th>
+                
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200" *ngFor="let request of listOfRequests">
+              <tr >
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{{request.email}}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{request.createdAt}}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{request.address}}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                        <button type="button" (click)="handleRequest(request, getRequestTypes.ACCEPTED)" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Approve</button>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                    <button type="button" (click)="handleRequest(request, getRequestTypes.REJECTED)" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Reject</button>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800"><input id="rejectReason" name="rejectReason" type="text" ngModel="rejectReason" class="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500" placeholder="Reject reason" />
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+    
+        </div>
+      </div>
+    </div>
+  </div>
